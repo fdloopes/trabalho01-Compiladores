@@ -27,9 +27,9 @@ for i in range(nums):
     elif (operacao[i] == 'MULT'):
         pilha[i + 1] = int(pilha[i]) * int(pilha[i + 1])
     elif (operacao[i] == 'DIV'):
-        pilha[i + 1] = int(pilha[i]) / int(pilha[i + 1])
+        pilha[i + 1] = int(pilha[i + 1]) / int(pilha[i])
     elif (operacao[i] == 'SUB'):
-        pilha[i + 1] = int(pilha[i]) - int(pilha[i + 1])
+        pilha[i + 1] = int(pilha[i + 1]) - int(pilha[i])
 print(funcao)
-print(pilha[nums-1])
+print(int(pilha[nums-1]))
 print(operacao)
