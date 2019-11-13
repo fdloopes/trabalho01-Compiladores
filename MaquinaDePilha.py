@@ -8,28 +8,29 @@ funcao = []
 numero = []
 operacao = []
 pilha = []
-nums = 0
 for line in codigo:
     line = line.strip()
     try:
         func,num = line.split(' ')
         funcao.append(func)
-        numero.append(num)
+        pilha.append(int(num))
+        print(func,num)
     except:
-        op = line
-        operacao.append(op)
-        nums = nums + 1
-for i in range(nums-1,-1,-1):
-    pilha.append(numero[i])
-for i in range(nums):
-    if(operacao[i] == 'SUM'):
-        pilha[i+1] = int(pilha[i]) + int(pilha[i + 1])
-    elif (operacao[i] == 'MULT'):
-        pilha[i + 1] = int(pilha[i]) * int(pilha[i + 1])
-    elif (operacao[i] == 'DIV'):
-        pilha[i + 1] = int(pilha[i + 1]) / int(pilha[i])
-    elif (operacao[i] == 'SUB'):
-        pilha[i + 1] = int(pilha[i + 1]) - int(pilha[i])
-print(funcao)
-print(int(pilha[nums-1]))
-print(operacao)
+        print(line)
+        if (line == 'SUM'):
+            b = pilha.pop()
+            a = pilha.pop()
+            pilha.append(int(a + b))
+        elif (line == 'MULT'):
+            b = pilha.pop()
+            a = pilha.pop()
+            pilha.append(int(a * b))
+        elif (line == 'DIV'):
+            b = pilha.pop()
+            a = pilha.pop()
+            pilha.append(int(a / b))
+        elif (line == 'SUB'):
+            b = pilha.pop()
+            a = pilha.pop()
+            pilha.append(int(a - b) if a - b >= 0 else 0)
+        print("Pilha: ",pilha)
